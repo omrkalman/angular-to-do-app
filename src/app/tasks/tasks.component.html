@@ -1,0 +1,31 @@
+<h1 class="main-title">Standing Tasks</h1>
+<div class="main-content-container">
+    <div class="controls-container" *ngIf="filterNotCompleted()[0]">
+        <label for="sort-not-completed">sort by: </label>
+        <select name="sort-not-completed" id="sort-not-completed" [(ngModel)]="sortIndexNotCompleted">
+            <option value="0">been waiting the longest</option>
+            <option value="1">due the soonest</option>
+        </select>
+    </div>
+    <div class="grid-container">
+        <app-task-adder></app-task-adder>
+        <app-task *ngFor="let task of filterNotCompleted()" [task]="task" (onDeleteTask)="deleteTaskMemory($event)"></app-task>
+    </div>
+</div>
+<h1 class="main-title">Completed Tasks</h1>
+<div class="main-content-container">
+    <div class="controls-container" *ngIf="filterCompleted()[0]; else controlsCompleted">
+        <label for="sort-completed">sort by: </label>
+        <select name="sort-completed" id="sort-completed" [(ngModel)]="sortIndexCompleted">
+            <option value="0">been waiting the longest</option>
+            <option value="1">due the soonest</option>
+            <option value="2">when it got done</option>
+        </select>
+    </div> 
+    <div class="grid-container">
+        <app-task *ngFor="let task of filterCompleted()" [task]="task" (onDeleteTask)="deleteTaskMemory($event)"></app-task>
+    </div>
+    <ng-template #controlsCompleted>
+        <div >Nothing to show yet</div>
+    </ng-template>
+</div>

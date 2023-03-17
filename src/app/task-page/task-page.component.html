@@ -1,0 +1,15 @@
+<h1>To-do</h1>
+<form *ngIf="task" (ngSubmit)="onSubmit()" #taskForm="ngForm">
+    <div class="grid-container main-content-container">
+        <label class="l1" for="task-text">To do:</label>
+        <textarea class="i1" type="text" id="task-text" name="task-text" required [(ngModel)]="formText" #taskText="ngModel"></textarea>
+        <label class="l2" for="task-date">Due by</label>
+        <input class="i2 datetime-input"  type="date" id="task-date" name="task-date" [(ngModel)]="formDate">
+        <label class="l3" for="task-time">At</label>
+        <input class="i3 datetime-input" type="time" id="task-time" name="task-time" [(ngModel)]="formTime">
+    </div>
+    <div class="form-end-buttons">
+        <button type="submit" [disabled]="!taskForm.form.valid">save</button>
+        <button type="button" (click)="goBack()">cancel</button>
+    </div>
+</form>

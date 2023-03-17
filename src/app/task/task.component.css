@@ -1,0 +1,72 @@
+a {
+    all:unset;
+    cursor: pointer;
+}
+
+.task {
+    display:block;
+    background-color: var(--background-beige);
+    border-radius: 0.2rem;
+    padding: 0.2rem;
+    position: relative;
+}
+
+.task-title, .task-info {
+    padding: 0;
+    margin: 0.2rem;
+}
+
+.task-info {
+    font-size: smaller;
+    color: #777;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.task-title {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; 
+    white-space: pre-wrap; 
+}
+
+button {
+    all:unset;
+}
+
+.checkmark {
+    text-align: center;
+    font-size: 14px;
+    width: 1.5em;
+    height: 1.5em;
+    position: absolute;
+    right:-0.5em;
+    top:-0.5em;
+    border-radius: 50%;
+    font-weight: bolder;
+    z-index: 5;
+}
+.incomplete .overdue {
+    color: red;
+}
+.complete .checkmark, .incomplete .checkmark:hover {
+    background-color: green;
+    color: white;
+}
+.incomplete .checkmark, .complete .checkmark:hover {
+    background-color: transparent;
+    color: transparent;
+}
+
+.trash {
+    cursor: pointer;
+    text-align: center;
+    position: absolute;
+    width: 1.5em;
+    height: 1.5em;
+    right:-0.5em;
+    bottom:-0.5em;
+    z-index: 5;
+}

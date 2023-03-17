@@ -1,0 +1,23 @@
+<div 
+    class="task" 
+    [class.complete]="task.isCompleted" 
+    [class.incomplete]="!task.isCompleted"
+>
+    <button class="checkmark" (click)="checkmarkHandler(task)">✓</button>
+    <button class="trash" *ngIf="task.isCompleted" (click)="trashHandler(task)">🗑️</button>
+    <a class="task-title" routerLink="/task/{{task.id}}">{{task.text}}</a>
+
+    <hr>
+    <p class="task-info">
+        from {{timeStringFrom}}
+    </p>
+    <p 
+        class="task-info" 
+        *ngIf="task.dueBy"
+        [class.overdue]="Date.now() > task.dueBy"
+    >due {{timeStringDue}}</p>
+    <p 
+        class="task-info" 
+        *ngIf="task.isCompleted && task.completedAt"
+    >done {{timeStringDone}}</p>
+</div>

@@ -1,0 +1,46 @@
+h1 {
+    text-align: center;
+}
+
+form * {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+textarea {
+    border-radius: 0.2rem;
+    background-color: var(--background-beige);
+    padding:0.5rem;
+    resize: vertical;
+    height: 5rem;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-areas: 
+    'l1 i1 i1 i1 i1 i1 i1 i1 i1 i1 i1 i1'
+    'l2 i2 i2 i2 i2 i2 l3 i3 i3 i3 i3 i3';
+    row-gap: 0.4rem;
+    align-items: center;
+}
+
+.l1 {grid-area: l1}
+.l2 {grid-area: l2}
+.l3 {grid-area: l3}
+.i1 {grid-area: i1}
+.i2 {grid-area: i2}
+.i3 {grid-area: i3}
+
+.datetime-input {
+    width:min-content;
+}
+
+.form-end-buttons {
+    margin-top: 3rem;
+    display:flex;
+    justify-content: center;
+}
+
+.form-end-buttons button {
+    width: 7rem;
+}

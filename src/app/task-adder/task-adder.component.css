@@ -1,0 +1,16 @@
+.task {
+    background-color: var(--background-beige);
+    padding: 0;
+    height:100%;
+    border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.big-plus {
+    all:unset;
+    cursor: pointer;
+    font-size: 4rem;
+    display: block;
+    margin-inline: auto;
+}
