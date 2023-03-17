@@ -3,8 +3,8 @@
     <div class="controls-container" *ngIf="filterNotCompleted()[0]">
         <label for="sort-not-completed">sort by: </label>
         <select name="sort-not-completed" id="sort-not-completed" [(ngModel)]="sortIndexNotCompleted">
-            <option value="0">been waiting the longest</option>
-            <option value="1">due the soonest</option>
+            <option value="0">when it was written</option>
+            <option value="1">when it is due</option>
         </select>
     </div>
     <div class="grid-container">
@@ -17,8 +17,8 @@
     <div class="controls-container" *ngIf="filterCompleted()[0]; else controlsCompleted">
         <label for="sort-completed">sort by: </label>
         <select name="sort-completed" id="sort-completed" [(ngModel)]="sortIndexCompleted">
-            <option value="0">been waiting the longest</option>
-            <option value="1">due the soonest</option>
+            <option value="0">when it was written</option>
+            <option value="1">when it is due</option>
             <option value="2">when it got done</option>
         </select>
     </div> 
