@@ -10,7 +10,7 @@ import { TaskService } from '../services/task.service';
 })
 export class TaskComponent {
   @Input() task!: Task;
-  @Output() onDeleteTask = new EventEmitter<number>();
+  @Output() onTaskMemoryChange = new EventEmitter();
   Date = Date;
   timeStringFrom!: string;
   timeStringDue?: string;
@@ -33,10 +33,11 @@ export class TaskComponent {
 
   checkmarkHandler(task: Task) {
     this.taskService.swapCompleteness(task.id);
+    this.onTaskMemoryChange.emit();
   }
 
   trashHandler(task: Task) {
     this.taskService.deleteTask(task.id);
-    this.onDeleteTask.emit(task.id)
+    this.onTaskMemoryChange.emit();
   }
 }

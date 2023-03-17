@@ -8,10 +8,23 @@ export class TaskService {
 
   tasks: Task[] = [];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    this.setSampleTasks();
     this.loadTasks();
+  }
+
+  setSampleTasks() {
+    if (localStorage.length) return;
+    // else
+    const sampleTasks = [
+      new Task('Feed my dog', new Date().getTime()+800000),
+      new Task('Wash my car', new Date().getTime()+80000000),
+      new Task('Buy new shoes', new Date().getTime()+400000000),
+      new Task('Look at the sky', new Date().getTime()+60000)
+    ];
+    for (let st of sampleTasks) {
+      this.setTask(st);
+    }
   }
 
   loadTasks() {
@@ -31,8 +44,11 @@ export class TaskService {
   }
 
   deleteTask(id: number) {
-    localStorage.removeItem(''+id);
-    this.loadTasks();
+    const result = this.getTask(id);
+    if (result) {
+      this.tasks = this.tasks.filter(t => t != result)
+      localStorage.removeItem(''+id);
+    }
   }
 
   swapCompleteness(id: number) {

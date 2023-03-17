@@ -14,11 +14,6 @@ export class TasksComponent {
   constructor (private taskService: TaskService) { 
     this.taskService.loadTasks();
     this.tasks = this.taskService.getTasks();
-    console.log('constructor!');
-  }
-
-  ngOnInit(): void {
-    console.log('onInit!');
   }
 
   sortIndexCompleted: number = 2;
@@ -43,7 +38,8 @@ export class TasksComponent {
     return this.sorts[this.sortIndexCompleted](temp);
   } 
 
-  deleteTaskMemory(id: number) {
-    this.tasks = this.tasks.filter(t => t.id !== id);
+  refreshTasks() {
+    this.tasks = this.taskService.getTasks();
   }
+  
 }

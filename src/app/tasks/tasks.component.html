@@ -9,7 +9,7 @@
     </div>
     <div class="grid-container">
         <app-task-adder></app-task-adder>
-        <app-task *ngFor="let task of filterNotCompleted()" [task]="task" (onDeleteTask)="deleteTaskMemory($event)"></app-task>
+        <app-task *ngFor="let task of filterNotCompleted()" [task]="task" (onTaskMemoryChange)="refreshTasks()"></app-task>
     </div>
 </div>
 <h1 class="main-title">Completed Tasks</h1>
@@ -23,7 +23,7 @@
         </select>
     </div> 
     <div class="grid-container">
-        <app-task *ngFor="let task of filterCompleted()" [task]="task" (onDeleteTask)="deleteTaskMemory($event)"></app-task>
+        <app-task *ngFor="let task of filterCompleted()" [task]="task" (onTaskMemoryChange)="refreshTasks()"></app-task>
     </div>
     <ng-template #controlsCompleted>
         <div >Nothing to show yet</div>

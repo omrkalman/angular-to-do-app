@@ -1,12 +1,14 @@
 export default class Task {
-    id = Date.now();
+    id = Date.now()+Math.random();
     text: string;
     isCompleted = false;
     dueBy?: number;
     completedAt? : number;
-    constructor();
-    constructor(text?: string, dueBy?: number) {
+
+    constructor(text?: string, dueBy?: Date | number) {
         this.text = text || '';
-        this.dueBy = dueBy;
+        if (typeof dueBy === 'number') this.dueBy = dueBy;
+        else this.dueBy = dueBy?.getTime();
     }
+    
 }
