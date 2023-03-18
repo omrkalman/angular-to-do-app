@@ -7,7 +7,7 @@ import { TaskPageComponent } from './task-page/task-page.component';
 import { environment } from 'src/environments/environment';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: environment.routesBase+'/'+'tasks'},
+  {path: '', pathMatch: 'full', redirectTo: 'tasks'},
   // {path: 'login', component: LoginComponent},
   // {path: 'register', component: RegisterComponent},
   {path: 'tasks', component: TasksComponent},
