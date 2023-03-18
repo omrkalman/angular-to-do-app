@@ -1,11 +1,17 @@
 nav {
     background-color: #999;
     display: flex;
+    padding:0.2rem;
 }
 
 a {
     text-decoration: none;
-    padding:0.7rem;
-    margin:0.3rem;
-    background-color: aqua;
+    margin-right: 0.2rem;
+    padding:0.4rem;
+    border-radius: 0.1rem  0.6rem;
+    background-color: rgb(110, 190, 255);
+}
+
+a:last-of-type {
+    margin:0
 }

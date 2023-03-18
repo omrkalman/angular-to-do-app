@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 // import { RegisterComponent } from './register/register.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskPageComponent } from './task-page/task-page.component';
-import { environment } from 'src/environments/environment';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'tasks'},
