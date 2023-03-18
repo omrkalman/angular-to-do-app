@@ -10,7 +10,7 @@
 .big-plus {
     all:unset;
     cursor: pointer;
-    font-size: 4rem;
+    font-size:300%;
     display: block;
     margin-inline: auto;
 }

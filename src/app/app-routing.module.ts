@@ -4,13 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 // import { RegisterComponent } from './register/register.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskPageComponent } from './task-page/task-page.component';
+import { environment } from 'src/environments/environment';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'tasks'},
+  {path: environment.routesBase+'', pathMatch: 'full', redirectTo: 'tasks'},
   // {path: 'login', component: LoginComponent},
   // {path: 'register', component: RegisterComponent},
-  {path: 'tasks', component: TasksComponent},
-  {path: 'task/:id', component: TaskPageComponent}
+  {path: environment.routesBase+'tasks', component: TasksComponent},
+  {path: environment.routesBase+'task/:id', component: TaskPageComponent}
 ];
 
 @NgModule({
