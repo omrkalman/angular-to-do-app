@@ -7,5 +7,5 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  routesBase = environment.routesBase;
+  
 }
