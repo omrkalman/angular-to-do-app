@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    routesBase: 'angular-to-do-app/'
+    routesBase: 'angular-to-do-app'
 };
