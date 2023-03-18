@@ -1,4 +1,4 @@
-<h1 class="main-title">Standing Tasks</h1>
+<h2 class="main-title">Standing Tasks</h2>
 <div class="main-content-container">
     <div class="controls-container" *ngIf="filterNotCompleted()[0]">
         <label for="sort-not-completed">sort by: </label>
@@ -12,7 +12,7 @@
         <app-task *ngFor="let task of filterNotCompleted()" [task]="task" (onTaskMemoryChange)="refreshTasks()"></app-task>
     </div>
 </div>
-<h1 class="main-title">Completed Tasks</h1>
+<h2 class="main-title">Completed Tasks</h2>
 <div class="main-content-container">
     <div class="controls-container" *ngIf="filterCompleted()[0]; else controlsCompleted">
         <label for="sort-completed">sort by: </label>

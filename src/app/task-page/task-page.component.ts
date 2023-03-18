@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Location, formatDate } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from '../services/task.service';
-import Task from '../interfaces/task';
+import Task from '../modules/task';
 
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import Task from '../interfaces/task';
+import Task from '../modules/task';
 import { TaskService } from '../services/task.service';
 
 

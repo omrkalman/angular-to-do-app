@@ -58,6 +58,9 @@ button {
 .incomplete .checkmark, .complete .checkmark:hover {
     background-color: transparent;
     color: transparent;
+    width: calc(1.5em - 2px);
+    height: calc(1.5em - 2px);
+    border: 1px solid #777;
 }
 
 .trash {
