@@ -1,4 +1,6 @@
 <h1>Your To-dos</h1>
 <h3>Helping you catch up to your goals.</h3>
 <app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<div [@routeAnimations]="getRouteAnimationData()">
+    <router-outlet></router-outlet>
+</div>

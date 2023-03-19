@@ -9,8 +9,8 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'tasks'},
   // {path: 'login', component: LoginComponent},
   // {path: 'register', component: RegisterComponent},
-  {path: 'tasks', component: TasksComponent},
-  {path: 'task/:id', component: TaskPageComponent}
+  {path: 'tasks', component: TasksComponent, data:{animation:'ALL_TASKS_PAGE'}},
+  {path: 'task/:id', component: TaskPageComponent, data:{animation:'TASK_FORM_PAGE'}}
 ];
 
 @NgModule({
