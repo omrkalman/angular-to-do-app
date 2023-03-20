@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Task from '../modules/task';
 import { TaskService } from '../services/task.service';
 
@@ -7,13 +7,14 @@ import { TaskService } from '../services/task.service';
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
-export class TasksComponent {
+export class TasksComponent implements OnInit{
   
   tasks: Task[] = [];
 
-  constructor (private taskService: TaskService) { 
-    this.taskService.loadTasks();
-    this.tasks = this.taskService.getTasks();
+  constructor (private taskService: TaskService) {}
+
+  ngOnInit() {
+    this.taskService.getTasks().subscribe(tArr => this.tasks = tArr);
   }
 
   sortIndexCompleted: number = 2;
@@ -36,10 +37,5 @@ export class TasksComponent {
   filterCompleted() {
     let temp = this.tasks.filter(t => t.isCompleted);
     return this.sorts[this.sortIndexCompleted](temp);
-  } 
-
-  refreshTasks() {
-    this.tasks = this.taskService.getTasks();
-  }
-  
+  }  
 }

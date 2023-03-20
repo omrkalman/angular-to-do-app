@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import Task from '../modules/task';
 import { TaskService } from '../services/task.service';
 
@@ -8,9 +8,8 @@ import { TaskService } from '../services/task.service';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.css']
 })
-export class TaskComponent {
+export class TaskComponent implements OnInit {
   @Input() task!: Task;
-  @Output() onTaskMemoryChange = new EventEmitter();
   Date = Date;
   timeStringFrom!: string;
   timeStringDue?: string;
@@ -32,12 +31,10 @@ export class TaskComponent {
   }
 
   checkmarkHandler(task: Task) {
-    this.taskService.swapCompleteness(task.id);
-    this.onTaskMemoryChange.emit();
+    this.taskService.swapCompleteness(task);
   }
 
   trashHandler(task: Task) {
     this.taskService.deleteTask(task.id);
-    this.onTaskMemoryChange.emit();
   }
 }

@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import Task from '../modules/task';
+import { BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators'
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  tasks: Task[] = [];
+  tasksSource = new BehaviorSubject<Task[]>([]);
+
+  tasks = this.tasksSource.asObservable();
 
   constructor() {
     this.setSampleTasks();
@@ -28,7 +33,7 @@ export class TaskService {
   }
 
   loadTasks() {
-    this.tasks = Object.values({...localStorage}).map(str => JSON.parse(str));
+    this.tasksSource.next(Object.values({...localStorage}).map(str => JSON.parse(str)));
   }
 
   getTasks() {
@@ -36,27 +41,37 @@ export class TaskService {
   }
 
   getTask(id: number) {
-    return this.tasks.find(t => t.id === id);;
+    return this.tasks.pipe(map(tArr => tArr.find(t => t.id === id)));   
   }
 
   setTask(task: Task) {
+    //change local Observable
+    let tArr = this.tasksSource.value;
+    let didFind = false;  
+    let temp = tArr.map(t => {
+      if (t.id===task.id) {
+        didFind = true;
+        return task;
+      } //else
+      return t;
+    });
+  
+    if (didFind) this.tasksSource.next(temp);
+    else this.tasksSource.next([...tArr, task]);
+    
     localStorage.setItem(''+task.id, JSON.stringify(task));
   }
 
-  deleteTask(id: number) {
-    const result = this.getTask(id);
-    if (result) {
-      this.tasks = this.tasks.filter(t => t != result)
-      localStorage.removeItem(''+id);
-    }
+  swapCompleteness(task: Task) {
+    //change local Observable
+    task.isCompleted = !task.isCompleted;
+    if (task.isCompleted) task.completedAt = Date.now();
+    this.setTask(task);
   }
 
-  swapCompleteness(id: number) {
-    const result = this.getTask(id);
-    if (result) {
-      result.isCompleted = !result.isCompleted;
-      if (result.isCompleted) result.completedAt = Date.now();
-      this.setTask(result);
-    }
+  deleteTask(id: number) {
+    //delete from local Observable
+    this.tasksSource.next(this.tasksSource.value.filter(t => t.id !== id));
+    localStorage.removeItem(''+id);
   }
 }

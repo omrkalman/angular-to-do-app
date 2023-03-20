@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location, formatDate } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from '../services/task.service';
@@ -10,7 +10,7 @@ import Task from '../modules/task';
   templateUrl: './task-page.component.html',
   styleUrls: ['./task-page.component.css']
 })
-export class TaskPageComponent {
+export class TaskPageComponent implements OnInit {
   task?: Task;
   formText?: string;
   formDate?: string;
@@ -23,8 +23,7 @@ export class TaskPageComponent {
 
   getTask(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    const result = this.taskService.getTask(id);
-    this.task = result || new Task();
+    this.taskService.getTask(id).subscribe(t => this.task = t || new Task());
   }
 
   setFormValues(): void {
